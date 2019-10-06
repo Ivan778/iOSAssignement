@@ -1,2 +1,6 @@
 // ISProductsListViewController
 "products_list_vc_title" = "Products";
+
+// Network
+"unknown_error" = "Unknown error";
+"unable_to_parse" = "Can't parse data!";

@@ -37,6 +37,7 @@ class ISProductsListViewController: UIViewController {
     }
 }
 
+// MARK: UICollectionViewDataSource
 extension ISProductsListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 15
@@ -48,6 +49,7 @@ extension ISProductsListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
 extension ISProductsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = self.sectionInsets.left * (self.itemsPerRow + 1)

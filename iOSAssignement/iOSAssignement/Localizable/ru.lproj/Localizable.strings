@@ -1,2 +1,6 @@
 // ISProductsListViewController
 "products_list_vc_title" = "Продукты";
+
+// Network
+"unknown_error" = "Неизвестная ошибка";
+"unable_to_parse" = "Невозможно распарсить данные";
