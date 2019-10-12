@@ -20,14 +20,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7y9-BM-If7">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="241"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rose" translatesAutoresizingMaskIntoConstraints="NO" id="nSG-2P-zL5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSG-2P-zL5">
                                 <rect key="frame" x="0.0" y="0.0" width="374" height="241"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-et-Pc5">
+                                <rect key="frame" x="177" y="110.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Pik-et-Pc5" firstAttribute="centerX" secondItem="7y9-BM-If7" secondAttribute="centerX" id="1uH-c1-yhx"/>
                             <constraint firstAttribute="trailing" secondItem="nSG-2P-zL5" secondAttribute="trailing" id="8ZC-Ox-kBC"/>
                             <constraint firstAttribute="bottom" secondItem="nSG-2P-zL5" secondAttribute="bottom" id="GcB-uc-UT2"/>
+                            <constraint firstItem="Pik-et-Pc5" firstAttribute="centerY" secondItem="7y9-BM-If7" secondAttribute="centerY" id="mV1-C6-Sc5"/>
                             <constraint firstItem="nSG-2P-zL5" firstAttribute="leading" secondItem="7y9-BM-If7" secondAttribute="leading" id="qhe-tA-0Xu"/>
                             <constraint firstItem="nSG-2P-zL5" firstAttribute="top" secondItem="7y9-BM-If7" secondAttribute="top" id="tdA-bY-8Fl"/>
                         </constraints>
@@ -38,7 +43,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeQ-f1-UPt">
                                 <rect key="frame" x="0.0" y="0.0" width="324" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-DM-6Ld">
@@ -65,6 +70,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="374" height="344"/>
             <connections>
+                <outlet property="activityIndicator" destination="Pik-et-Pc5" id="6Lf-ws-LIm"/>
                 <outlet property="imageView" destination="nSG-2P-zL5" id="a8a-VY-jwg"/>
                 <outlet property="imageViewContainerView" destination="7y9-BM-If7" id="hZa-cn-X9X"/>
                 <outlet property="subtitleLabel" destination="wdq-DM-6Ld" id="yON-Jd-v0F"/>
@@ -73,7 +79,4 @@
             <point key="canvasLocation" x="79.710144927536234" y="151.33928571428569"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="rose" width="500" height="331"/>
-    </resources>
 </document>

@@ -17,6 +17,7 @@
 		2C41FE4723429D1000545DBA /* ISProductsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C41FE4523429D1000545DBA /* ISProductsListViewController.xib */; };
 		2C4A32D0234A597000A3CA14 /* ProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A32CF234A597000A3CA14 /* ProductListModel.swift */; };
 		2C4A32D2234A5F0B00A3CA14 /* ProductDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A32D1234A5F0B00A3CA14 /* ProductDetailed.swift */; };
+		2C4A32D6234A65D900A3CA14 /* ISProductsListViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A32D5234A65D900A3CA14 /* ISProductsListViewControllerManager.swift */; };
 		2CEEB04B23429F21005712C4 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEB04923429F21005712C4 /* ProductCollectionViewCell.swift */; };
 		2CEEB04C23429F21005712C4 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEB04A23429F21005712C4 /* ProductCollectionViewCell.xib */; };
 		2CEEB0512342A2ED005712C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEB0532342A2ED005712C4 /* Localizable.strings */; };
@@ -50,6 +51,7 @@
 		2C41FE4523429D1000545DBA /* ISProductsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ISProductsListViewController.xib; sourceTree = "<group>"; };
 		2C4A32CF234A597000A3CA14 /* ProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListModel.swift; sourceTree = "<group>"; };
 		2C4A32D1234A5F0B00A3CA14 /* ProductDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailed.swift; sourceTree = "<group>"; };
+		2C4A32D5234A65D900A3CA14 /* ISProductsListViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISProductsListViewControllerManager.swift; sourceTree = "<group>"; };
 		2CEEB04923429F21005712C4 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CEEB04A23429F21005712C4 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		2CEEB0522342A2ED005712C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -99,9 +101,9 @@
 		2C41FE1C23429CCC00545DBA /* iOSAssignement */ = {
 			isa = PBXGroup;
 			children = (
-				2CEEB0612343D90A005712C4 /* Network */,
-				2CEEB0582342A3D0005712C4 /* Extensions */,
 				2C41FE4223429CE400545DBA /* AppDelegate */,
+				2CEEB0582342A3D0005712C4 /* Extensions */,
+				2CEEB0612343D90A005712C4 /* Network */,
 				2C41FE4323429CFC00545DBA /* ViewControllers */,
 				2CEEB04723429EFE005712C4 /* Views */,
 				2CEEB0502342A230005712C4 /* Localizable */,
@@ -142,6 +144,7 @@
 		2C41FE4823429D1300545DBA /* ISProductsListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2C4A32D4234A65BD00A3CA14 /* ISProductsListViewControllerManager */,
 				2C41FE4423429D1000545DBA /* ISProductsListViewController.swift */,
 				2C41FE4523429D1000545DBA /* ISProductsListViewController.xib */,
 			);
@@ -154,6 +157,14 @@
 				2CEEB06F234A48C6005712C4 /* ISNetworkBase.swift */,
 			);
 			path = BaseLoader;
+			sourceTree = "<group>";
+		};
+		2C4A32D4234A65BD00A3CA14 /* ISProductsListViewControllerManager */ = {
+			isa = PBXGroup;
+			children = (
+				2C4A32D5234A65D900A3CA14 /* ISProductsListViewControllerManager.swift */,
+			);
+			path = ISProductsListViewControllerManager;
 			sourceTree = "<group>";
 		};
 		2CEEB04723429EFE005712C4 /* Views */ = {
@@ -328,6 +339,7 @@
 				2C41FE2823429CCC00545DBA /* iOSAssignement.xcdatamodeld in Sources */,
 				2CEEB04B23429F21005712C4 /* ProductCollectionViewCell.swift in Sources */,
 				2C41FE1E23429CCC00545DBA /* AppDelegate.swift in Sources */,
+				2C4A32D6234A65D900A3CA14 /* ISProductsListViewControllerManager.swift in Sources */,
 				2C41FE2023429CCC00545DBA /* SceneDelegate.swift in Sources */,
 				2CEEB070234A48C6005712C4 /* ISNetworkBase.swift in Sources */,
 			);

@@ -14,10 +14,21 @@ class ISProductsListViewController: UIViewController {
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
+    let manager = ISProductsListViewControllerManager()
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        self.manager.loadProducts(success: { [weak self] () in
+            DispatchQueue.main.async {
+                self?.productsListCollectionView.reloadData()
+            }
+        }) { [weak self] (errorMessage) in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(title: "error_title".localized(), message: errorMessage)
+            }
+        }
     }
     
     // MARK: Configure view
@@ -35,16 +46,46 @@ class ISProductsListViewController: UIViewController {
         self.productsListCollectionView.delegate = self
         self.productsListCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.reuseId())
     }
+    
+    func configure(cell: ProductCollectionViewCell, for indexPath: IndexPath) {
+        cell.showActivityIndicator(show: false)
+        let product = self.manager.product(for: indexPath)
+        cell.set(image: UIImage(), title: product.name, subtitle: "\("price_title".localized()) \(product.price)")
+        if let image = self.manager.image(for: indexPath) {
+            cell.imageView.image = image
+        } else {
+            cell.showActivityIndicator(show: true)
+            cell.imageView.setImageFromUrl(ImageURL: product.image) { [weak self] (image) in
+                cell.showActivityIndicator(show: false)
+                if let cellToUpdate = self?.productsListCollectionView?.cellForItem(at: indexPath) {
+                    self?.manager.cache(image: image, indexPath: indexPath)
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0.5, animations: {
+                            cellToUpdate.setNeedsLayout()
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: Other
+    func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok".localized(), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: UICollectionViewDataSource
 extension ISProductsListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return self.manager.amountOfProducts()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseId(), for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseId(), for: indexPath) as! ProductCollectionViewCell
+        self.configure(cell: cell, for: indexPath)
         return cell
     }
 }

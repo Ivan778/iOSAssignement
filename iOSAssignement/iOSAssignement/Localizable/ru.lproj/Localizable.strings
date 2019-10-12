@@ -2,5 +2,12 @@
 "products_list_vc_title" = "Продукты";
 
 // Network
+"error_title" = "Ошибка";
 "unknown_error" = "Неизвестная ошибка";
 "unable_to_parse" = "Невозможно распарсить данные";
+
+// Products
+"price_title" = "Всего за";
+
+// Other
+"ok" = "Ok";

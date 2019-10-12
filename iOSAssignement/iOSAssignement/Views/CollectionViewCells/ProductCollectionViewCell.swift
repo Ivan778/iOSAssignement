@@ -13,6 +13,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -24,6 +25,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     func configureView() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
+        self.activityIndicator.hidesWhenStopped = true
     }
     
     // MARK: Accessors
@@ -31,6 +33,11 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.imageView.image = image
         self.titleLabel.text = title
         self.subtitleLabel.text = subtitle
+    }
+    
+    func showActivityIndicator(show: Bool) {
+        show ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = !show
     }
     
     // MARK: Other

@@ -2,5 +2,12 @@
 "products_list_vc_title" = "Products";
 
 // Network
+"error_title" = "Error";
 "unknown_error" = "Unknown error";
 "unable_to_parse" = "Can't parse data!";
+
+// Products
+"price_title" = "Just for";
+
+// Other
+"ok" = "Ok";
