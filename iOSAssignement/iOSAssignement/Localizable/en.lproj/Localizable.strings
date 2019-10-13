@@ -5,6 +5,7 @@
 "error_title" = "Error";
 "unknown_error" = "Unknown error";
 "unable_to_parse" = "Can't parse data!";
+"no_internet_connection" = "No Internet connection";
 
 // Products
 "price_title" = "Just for";

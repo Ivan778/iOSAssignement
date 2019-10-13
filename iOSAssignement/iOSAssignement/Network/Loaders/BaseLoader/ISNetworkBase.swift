@@ -36,6 +36,10 @@ class ISNetworkBase: NSObject {
             }
         }
         
-        task.resume()
+        if Reachability.isConnectedToNetwork() {
+            task.resume()
+        } else {
+            failure("no_internet_connection".localized())
+        }
     }
 }
