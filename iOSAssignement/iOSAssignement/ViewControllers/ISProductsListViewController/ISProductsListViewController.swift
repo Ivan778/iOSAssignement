@@ -20,25 +20,13 @@ class ISProductsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        self.manager.loadProducts(success: { [weak self] () in
-            DispatchQueue.main.async {
-                self?.productsListCollectionView.reloadData()
-            }
-        }) { [weak self] (errorMessage) in
-            DispatchQueue.main.async {
-                self?.showErrorAlert(title: "error_title".localized(), message: errorMessage)
-            }
-        }
+        self.loadProductsList()
     }
     
     // MARK: Configure view
     func configureView() {
         self.configureNavigationController()
         self.configureProductsListCollectionView()
-    }
-    
-    func configureNavigationController() {
-        self.title = "products_list_vc_title".localized()
     }
     
     func configureProductsListCollectionView() {
@@ -69,11 +57,41 @@ class ISProductsListViewController: UIViewController {
         }
     }
     
+    func configureNavigationController() {
+        self.title = "products_list_vc_title".localized()
+        self.navigationItem.rightBarButtonItem = self.reloadButton()
+    }
+    
+    func reloadButton() -> UIBarButtonItem {
+        let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadButtonPressed))
+        return reloadButton
+    }
+    
+    // MARK: Handlers
+    @objc func reloadButtonPressed() {
+        self.loadProductsList()
+    }
+    
     // MARK: Other
     func showErrorAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok".localized(), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func loadProductsList() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.manager.loadProducts(success: { [weak self] () in
+            DispatchQueue.main.async {
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.productsListCollectionView.reloadData()
+            }
+        }) { [weak self] (errorMessage) in
+            DispatchQueue.main.async {
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.showErrorAlert(title: "error_title".localized(), message: errorMessage)
+            }
+        }
     }
 }
 

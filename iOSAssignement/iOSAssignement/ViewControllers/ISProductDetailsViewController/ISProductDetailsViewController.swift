@@ -31,24 +31,7 @@ class ISProductDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        self.show(activityIndicator: self.productActivityIndicator, show: true)
-        self.manager.loadProduct(success: { [weak self] (imageUrl) in
-            DispatchQueue.main.async {
-                self?.show(activityIndicator: self?.imageActivityIndicator, show: true)
-                self?.imageView.setImageFromUrl(ImageURL: imageUrl, completion: { (image) in
-                    self?.imageViewContainerHeightConstraint.constant = image.size.height * (self?.imageViewContainerHeightConstraint.constant)! / image.size.width
-                    self?.show(activityIndicator: self?.imageActivityIndicator, show: false)
-                })
-                self?.contentTableView.reloadData()
-                self?.view.setNeedsLayout()
-                self?.show(activityIndicator: self?.productActivityIndicator, show: false)
-            }
-        }) { [weak self] (errorMessage) in
-            DispatchQueue.main.async {
-                self?.show(activityIndicator: self?.productActivityIndicator, show: false)
-                self?.showErrorAlert(title: "error_title".localized(), message: errorMessage)
-            }
-        }
+        self.loadProductDetails()
     }
     
     override func viewWillLayoutSubviews() {
@@ -61,7 +44,7 @@ class ISProductDetailsViewController: UIViewController {
 
     // MARK: Configure view
     func configureView() {
-        self.title = "product_details_vc_title".localized()
+        self.configureNavigationController()
         self.configureImageViewContainer()
         self.configureContentTableView()
     }
@@ -76,6 +59,11 @@ class ISProductDetailsViewController: UIViewController {
         self.contentTableView.dataSource = self
         self.contentTableView.rowHeight = UITableView.automaticDimension
         self.contentTableView.estimatedRowHeight = 70
+    }
+    
+    
+    func configureNavigationController() {
+        self.title = "product_details_vc_title".localized()
     }
     
     // MARK: Other
@@ -94,6 +82,27 @@ class ISProductDetailsViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func loadProductDetails() {
+        self.show(activityIndicator: self.productActivityIndicator, show: true)
+        self.manager.loadProduct(success: { [weak self] (imageUrl) in
+            DispatchQueue.main.async {
+                self?.show(activityIndicator: self?.imageActivityIndicator, show: true)
+                self?.imageView.setImageFromUrl(ImageURL: imageUrl, completion: { (image) in
+                    self?.imageViewContainerHeightConstraint.constant = image.size.height * (self?.imageViewContainerHeightConstraint.constant)! / image.size.width
+                    self?.show(activityIndicator: self?.imageActivityIndicator, show: false)
+                })
+                self?.contentTableView.reloadData()
+                self?.view.setNeedsLayout()
+                self?.show(activityIndicator: self?.productActivityIndicator, show: false)
+            }
+        }) { [weak self] (errorMessage) in
+            DispatchQueue.main.async {
+                self?.show(activityIndicator: self?.productActivityIndicator, show: false)
+                self?.showErrorAlert(title: "error_title".localized(), message: errorMessage)
+            }
+        }
     }
 }
 

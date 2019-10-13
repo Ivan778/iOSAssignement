@@ -30,6 +30,7 @@ class ISProductDetailsViewControllerManager {
     }
     
     private func fillContentArray(product: ProductDetailed) {
+        self.contentArray.removeAll()
         self.contentArray.append(["key" : "product_name_key".localized(), "value" : product.name])
         self.contentArray.append(["key" : "product_price_key".localized(), "value" : "\(product.price) $"])
         self.contentArray.append(["key" : "product_description_key".localized(), "value" : product.description])
