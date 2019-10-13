@@ -50,7 +50,7 @@ class ISProductsListViewController: UIViewController {
     func configure(cell: ProductCollectionViewCell, for indexPath: IndexPath) {
         cell.showActivityIndicator(show: false)
         let product = self.manager.product(for: indexPath)
-        cell.set(image: UIImage(), title: product.name, subtitle: "\("price_title".localized()) \(product.price)")
+        cell.set(image: UIImage(), title: product.name, subtitle: "\("price_title".localized()) \(product.price) $")
         if let image = self.manager.image(for: indexPath) {
             cell.imageView.image = image
         } else {
@@ -87,6 +87,11 @@ extension ISProductsListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseId(), for: indexPath) as! ProductCollectionViewCell
         self.configure(cell: cell, for: indexPath)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailsVC = ISProductDetailsViewController(manager: ISProductDetailsViewControllerManager(productId: self.manager.product(for: indexPath).product_id))
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
 

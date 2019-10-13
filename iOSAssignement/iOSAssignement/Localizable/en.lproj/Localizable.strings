@@ -1,6 +1,9 @@
 // ISProductsListViewController
 "products_list_vc_title" = "Products";
 
+// ISProductDetailsViewController
+"product_details_vc_title" = "Product details";
+
 // Network
 "error_title" = "Error";
 "unknown_error" = "Unknown error";
@@ -9,6 +12,9 @@
 
 // Products
 "price_title" = "Just for";
+"product_name_key" = "Name of the product";
+"product_price_key" = "Price";
+"product_description_key" = "Product description";
 
 // Other
 "ok" = "Ok";

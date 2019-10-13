@@ -1,6 +1,9 @@
 // ISProductsListViewController
 "products_list_vc_title" = "Продукты";
 
+// ISProductDetailsViewController
+"product_details_vc_title" = "Детали продукта";
+
 // Network
 "error_title" = "Ошибка";
 "unknown_error" = "Неизвестная ошибка";
@@ -9,6 +12,9 @@
 
 // Products
 "price_title" = "Всего за";
+"product_name_key" = "Наименование продукта";
+"product_price_key" = "Цена";
+"product_description_key" = "Описание продукта";
 
 // Other
 "ok" = "Ok";
